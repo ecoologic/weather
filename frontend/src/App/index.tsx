@@ -1,17 +1,20 @@
-import { FC } from 'react';
+import React from 'react';
 import './index.css';
-import Themed from './App/Themed';
-import Content from './Content';
+import logo from '../logo.svg';
 
-const Header: FC = () => {
+import Content from '../Content';
+import Themed from './Themed';
+
+const Header = (): JSX.Element => {
   return (
     <header className="App__header">
       <h2>An App</h2>
+      <img src={logo} className="Header__logo" alt="logo" />
     </header>
   );
 };
 
-const Footer: FC = () => {
+const Footer = (): JSX.Element => {
   return (
     <footer className="App__footer">
       Designed by ecoologic &copy; {new Date().getFullYear()}
@@ -19,7 +22,7 @@ const Footer: FC = () => {
   );
 };
 
-const App: FC = () => {
+const App = (): JSX.Element => {
   return (
     <article className="App">
       <Themed>

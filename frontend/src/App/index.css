@@ -1,0 +1,52 @@
+/* Convention: */
+/* AppBlock__AppEl--AppModifier (capital for components only) */
+
+/* Content Disposition */
+
+.App__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-betw;
+  padding-inline: 1rem;
+}
+.App__content {
+  padding: 1rem;
+}
+.App__footer {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+/* Vertical Layout and heights */
+
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.App__header {
+  height: 5rem;
+}
+.App__footer {
+  height: 30em;
+}
+
+/* Colors */
+
+:root {
+  --blackish: #282c34;
+  --whitish: #f1f5fd;
+}
+
+body {
+  background-color: var(--whitish);
+}
+.App__header {
+  background-color: var(--blackish);
+  color: var(--whitish);
+}
+.App__footer {
+  background-color: var(--blackish);
+  color: var(--whitish);
+}
