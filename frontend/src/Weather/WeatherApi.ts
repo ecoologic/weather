@@ -2,7 +2,7 @@ import Api from '../utils/Api';
 
 const PROXY_URL = 'https://cors-anywhere.herokuapp.com';
 const WEATHER_BASE_URL = 'https://www.metaweather.com';
-const API_URL = `${PROXY_URL}/${WEATHER_BASE_URL}/api`;
+export const API_URL = `${PROXY_URL}/${WEATHER_BASE_URL}/api`;
 
 interface IrawDayWeather {
   applicable_date: string;

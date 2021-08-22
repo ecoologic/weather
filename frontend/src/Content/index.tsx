@@ -7,8 +7,6 @@ import SearchForm, { ISearchFormValues } from '../Weather/SearchForm';
 import SelectLocation from '../Weather/SelectLocation';
 import DaysWeather from './DaysWeather';
 
-const parseLocations = (nextDays: IdayWeather[]) => {};
-
 const locations: Ilocation[] = [
   { woeid: 123, name: 'Brisbane' },
   { woeid: 222, name: 'Sydney' },
@@ -29,8 +27,9 @@ const Content: FC = () => {
     <main className="App__content">
       <Paper className={classes.padded}>
         <SearchForm onSubmit={onSubmitSearchForm} />
-        {query}
         <SelectLocation locations={locations} />
+
+        <h2>First results for {query}</h2>
         <DaysWeather daysWeather={nextDays} />
       </Paper>
     </main>
