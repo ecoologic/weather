@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { ILocation } from './WeatherApi';
+import { Ilocation } from './WeatherApi';
 
 interface ISelectLocationProps {
-  locations: ILocation[];
+  locations: Ilocation[];
 }
 
 const SelectLocation: FC<ISelectLocationProps> = ({ locations }) => {

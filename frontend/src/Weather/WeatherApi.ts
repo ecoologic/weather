@@ -4,7 +4,7 @@ const PROXY_URL = 'https://cors-anywhere.herokuapp.com';
 const WEATHER_BASE_URL = 'https://www.metaweather.com/api';
 const PROXIED_URL = `${PROXY_URL}/${WEATHER_BASE_URL}`;
 
-interface IRawDayWeather {
+interface IrawDayWeather {
   weather_state_name: string;
   weather_state_abbr: string;
   min_temp: number;
@@ -12,7 +12,7 @@ interface IRawDayWeather {
   wind_speed: number;
 }
 
-export interface IDayWeather {
+export interface IdayWeather {
   weatherStateName: string;
   weatherStateAbbr: string;
   minTemp: number;
@@ -20,7 +20,7 @@ export interface IDayWeather {
   windSpeed: number;
 }
 
-export interface ILocation {
+export interface Ilocation {
   woeid: number;
   name: string;
 }
@@ -35,13 +35,13 @@ class WeatherApi {
   }
 
   // https://www.metaweather.com/api/location/1100661/
-  async nextDays(): Promise<IDayWeather[]> {
+  async nextDays(): Promise<IdayWeather[]> {
     const woeid = await this.getWoeid();
 
     const response = await Api.get(`${PROXIED_URL}/location/${woeid}`);
     if (response.success) {
       return response.data.consolidated_weather.map(
-        (dayWeather: IRawDayWeather) => ({
+        (dayWeather: IrawDayWeather) => ({
           weatherStateName: dayWeather.weather_state_name,
           weatherStateAbbr: dayWeather.weather_state_abbr,
           minTemp: dayWeather.min_temp,
