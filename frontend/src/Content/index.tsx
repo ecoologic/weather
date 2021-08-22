@@ -3,27 +3,27 @@ import { FC, useState } from 'react';
 import { IonSubmit } from '../utils/interfaces';
 import useStyles from '../utils/useStyles';
 import WeatherApi from '../Weather/WeatherApi';
-import LocationForm, { ILocationFormValues } from './LocationForm';
+import SearchForm, { ISearchFormValues } from '../Weather/SearchForm';
+import SelectLocation from '../Weather/SelectLocation';
 
 const Content: FC = () => {
   const classes = useStyles();
 
-  const [location, setLocation] = useState<string>('');
+  const [query, setQuery] = useState<string>('');
   const [nextDays, setNextDays] = useState<any[]>([]);
-  const onSubmitLocationForm: IonSubmit<ILocationFormValues> = async (
-    values
-  ) => {
-    setLocation(values.location);
-    const weatherApi = new WeatherApi(values.location);
+  const onSubmitSearchForm: IonSubmit<ISearchFormValues> = async (values) => {
+    setQuery(values.query);
+    const weatherApi = new WeatherApi(values.query);
     setNextDays(await weatherApi.nextDays());
   };
 
   return (
     <main className="App__content">
       <Paper className={classes.padded}>
-        <LocationForm onSubmit={onSubmitLocationForm} />
-        {location}
+        <SearchForm onSubmit={onSubmitSearchForm} />
+        {query}
         {JSON.stringify(nextDays)}
+        <SelectLocation locations={[{ woeid: 1, name: 'test' }]} />
       </Paper>
     </main>
   );

@@ -3,24 +3,24 @@ import Button from '../utils/Button';
 import { ChangeEvent, FC, useRef, useState } from 'react';
 import { IHasOnSubmit, voidFn } from '../utils/interfaces';
 
-export type ILocationFormFields = 'location';
-export interface ILocationFormValues {
-  location: string;
+export type ISearchFormFields = 'query';
+export interface ISearchFormValues {
+  query: string;
 }
+const blankValues = { query: '' };
 
-const LocationForm: FC<IHasOnSubmit<ILocationFormValues>> = ({ onSubmit }) => {
-  const blankValues = { location: '' };
-  const [values, setValues] = useState<ILocationFormValues>(blankValues);
+const SearchForm: FC<IHasOnSubmit<ISearchFormValues>> = ({ onSubmit }) => {
+  const [values, setValues] = useState<ISearchFormValues>(blankValues);
   const firstInputRef = useRef<HTMLHeadingElement | null>(null);
 
   const onChange = (ev: ChangeEvent<HTMLInputElement>) => {
     setValues((values) => ({ ...values, [ev.target.id]: ev.target.value }));
   };
 
-  const valid = (field: ILocationFormFields): boolean => {
+  const valid = (field: ISearchFormFields): boolean => {
     const value = values[field];
     const fieldValidator = {
-      location: () => !!value,
+      query: () => !!value,
     }[field];
     return fieldValidator();
   };
@@ -38,11 +38,11 @@ const LocationForm: FC<IHasOnSubmit<ILocationFormValues>> = ({ onSubmit }) => {
   return (
     <form>
       <TextField
-        id="location"
-        label="Name"
-        value={values.location}
-        error={!valid('location')}
-        helperText={valid('location') ? '' : `Any value`}
+        id="query"
+        label="Search locations"
+        value={values.query}
+        error={!valid('query')}
+        helperText={valid('query') ? '' : `Any place`}
         inputRef={firstInputRef}
         required
         autoFocus
@@ -51,16 +51,16 @@ const LocationForm: FC<IHasOnSubmit<ILocationFormValues>> = ({ onSubmit }) => {
       <ButtonGroup fullWidth={true}>
         <Button
           enabled={isEnabled()}
-          title="Push me"
+          title="Search"
           color="primary"
           onClick={wrappedOnSubmit}
           fullWidth={true}
         >
-          Submit
+          Search
         </Button>
       </ButtonGroup>
     </form>
   );
 };
 
-export default LocationForm;
+export default SearchForm;
