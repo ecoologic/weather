@@ -1,12 +1,26 @@
 # Weather Forecast Widget
 
+## Installation
+
+```
+npm install
+npm test
+npm start
+```
+
+Then open a browser on `http://localhost:3000` unless it starts itself.
+
+---
+
+## The Challenge
+
 Trend Micro Frontend Challenge, Front-end focused project.
 
 Only for candidates who have demonstrated a history of working with AWS services particularly Lambda and other serverless services.
 
 1. Create a React application with the tooling and the design system of your choice
 2. Create a simple form that takes a location as an input parameter.
-3. Integrate with the MetaWeather API to find the entered location: if there are many results for he search text entered, the user may have to select the desired location.
+3. Integrate with the MetaWeather API to find the entered location: if there are many results for the search text entered, the user may have to select the desired location.
 
 The API does not support CORS, so you will need to have a very simple mechanism in place to bypass the issue
 
