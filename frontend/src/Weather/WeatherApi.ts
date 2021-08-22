@@ -1,10 +1,11 @@
 import Api from '../utils/Api';
 
 const PROXY_URL = 'https://cors-anywhere.herokuapp.com';
-const WEATHER_BASE_URL = 'https://www.metaweather.com/api';
-const PROXIED_URL = `${PROXY_URL}/${WEATHER_BASE_URL}`;
+const WEATHER_BASE_URL = 'https://www.metaweather.com';
+const API_URL = `${PROXY_URL}/${WEATHER_BASE_URL}/api`;
 
 interface IrawDayWeather {
+  applicable_date: string;
   weather_state_name: string;
   weather_state_abbr: string;
   min_temp: number;
@@ -13,6 +14,7 @@ interface IrawDayWeather {
 }
 
 export interface IdayWeather {
+  date: string;
   weatherStateName: string;
   weatherStateAbbr: string;
   minTemp: number;
@@ -24,6 +26,10 @@ export interface Ilocation {
   woeid: number;
   name: string;
 }
+
+export const conditionIcon = (weatherStateAbbr: string) => {
+  return `${WEATHER_BASE_URL}/static/img/weather/${weatherStateAbbr}.svg`;
+};
 
 // TODO: private??
 class WeatherApi {
@@ -38,10 +44,11 @@ class WeatherApi {
   async nextDays(): Promise<IdayWeather[]> {
     const woeid = await this.getWoeid();
 
-    const response = await Api.get(`${PROXIED_URL}/location/${woeid}`);
+    const response = await Api.get(`${API_URL}/location/${woeid}`);
     if (response.success) {
       return response.data.consolidated_weather.map(
         (dayWeather: IrawDayWeather) => ({
+          date: dayWeather.applicable_date,
           weatherStateName: dayWeather.weather_state_name,
           weatherStateAbbr: dayWeather.weather_state_abbr,
           minTemp: dayWeather.min_temp,
@@ -57,7 +64,7 @@ class WeatherApi {
 
   // https://www.metaweather.com/api/location/search/?query=san
   async getWoeid(): Promise<number | undefined> {
-    const response = await Api.get(`${PROXIED_URL}/location/search`, {
+    const response = await Api.get(`${API_URL}/location/search`, {
       query: this.locationQuery,
     });
     if (response.success) {
