@@ -1,6 +1,10 @@
 # Weather Forecast Widget
 
+TODO: add my notes
+
 ## Installation
+
+Request temporary access to the CORS proxy [here](https://cors-anywhere.herokuapp.com/corsdemo).
 
 ```
 npm install
