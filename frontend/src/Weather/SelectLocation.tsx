@@ -26,7 +26,9 @@ const SelectLocation: FC<ISelectLocationProps> = ({ locations }) => {
         inputProps={{ name: 'Location', id: 'locationSelect' }}
       >
         {locations.map((location) => (
-          <option value={location.woeid}>{location.name}</option>
+          <option value={location.woeid} key={location.woeid}>
+            {location.name}
+          </option>
         ))}
       </Select>
     );

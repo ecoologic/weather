@@ -1,12 +1,11 @@
 # Weather Forecast Widget
 
-TODO: add my notes
-
 ## Installation
 
 Request temporary access to the CORS proxy [here](https://cors-anywhere.herokuapp.com/corsdemo).
 
 ```
+cd frontend
 npm install
 npm test
 npm start
@@ -30,9 +29,9 @@ The API does not support CORS, so you will need to have a very simple mechanism 
 
 4.  Display the weather forecast for the next four days of the given location. Use the image assets provided by the documentation and display the following information:
 
-        General description of the weather
-        Minimum and maximum temperature
-        Wind speed
+- General description of the weather
+- Minimum and maximum temperature
+- Wind speed
 
 5.  Add tests to your application
 6.  Ensure that the application outputs production-ready artifacts
@@ -40,12 +39,12 @@ The API does not support CORS, so you will need to have a very simple mechanism 
 
 Notes:
 
-    Create a GitHub repository and keep a history of your work. Once done, please send us a link to your repository.
-    The goal is to demonstrate your technical capabilities, so the quality of the steps is more important than the number of steps you complete.
-    You can request a review before your work is complete. We normally respond to your code review requests within 24 hours.
-    Platform: Node.js 14.x
-    Language: JavaScript/ES6 or TypeScript
-    Use Jest or similar frameworks for unit testing
-    Use Prettier to format your code
-    Use ESLint to ensure code quality
-    Your work will be scored on problem break-down, functionality (accuracy and precision), performance, scalability, code readability, coding best practices, software design, and documentation.
+- Create a GitHub repository and keep a history of your work. Once done, please send us a link to your repository.
+- The goal is to demonstrate your technical capabilities, so the quality of the steps is more important than the number of steps you complete.
+- You can request a review before your work is complete. We normally respond to your code review requests within 24 hours.
+- Platform: Node.js 14.x
+- Language: JavaScript/ES6 or TypeScript
+- Use Jest or similar frameworks for unit testing
+- Use Prettier to format your code
+- Use ESLint to ensure code quality
+- Your work will be scored on problem break-down, functionality (accuracy and precision), performance, scalability, code readability, coding best practices, software design, and documentation.
